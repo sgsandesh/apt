@@ -1,0 +1,55 @@
+{
+        "email": "sgsande@gmail.com",
+        "password": "test12345",
+        "fullName": "sandesh Reddy",
+        "phoneNumber": "1234567890",
+        "hidePhoneNumber": "Y",
+        "hideEmail": "Y"
+    }
+
+    {
+            "email": "akshi@gmail.com",
+            "password": "akshi12345",
+            "fullName": "akshi Reddy",
+            "phoneNumber": "98888888"
+        }
+
+{
+            "email": "milind@gmail.com",
+            "password": "testtt2345",
+            "fullName": "Milind Guntaga",
+            "phoneNumber": "1123445"
+        }
+
+ {
+             "email": "Umesh@gmail.com",
+             "password": "testtt12345",
+             "fullName": "umeshaa",
+             "phoneNumber": "98888888"
+         }
+
+
+
+{
+        "societyName": "SSVD",
+        "city": "bangalore",
+"country" : "INDIA",
+"state" : "karnataka"
+    }
+
+
+
+{
+        "societyName": "BRIGADE",
+        "city": "bangalore",
+"country" : "INDIA",
+"state" : "karnataka"
+    }
+
+
+    {
+            "societyName": "MANTRI",
+            "city": "bangalore",
+    "country" : "INDIA",
+    "state" : "karnataka"
+        }
