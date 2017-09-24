@@ -3,7 +3,7 @@ package com.mySociety.model.view.basic;
 /**
  * Created by sandesh on 17/9/17.
  */
-public class SocietyBasicView {
+public class DisplaySocietyBasic {
 
     private String country;
 
@@ -11,7 +11,7 @@ public class SocietyBasicView {
 
     private String societyName;
 
-    private String city;;
+    private String city;
 
 
     public String getCountry() {

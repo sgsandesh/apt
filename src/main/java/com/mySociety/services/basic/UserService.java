@@ -1,11 +1,10 @@
 package com.mySociety.services.basic;
 
 import com.mySociety.model.orm.basic.SocietyEntity;
+import com.mySociety.model.orm.basic.SocietyResidenceEntity;
 import com.mySociety.model.orm.basic.UserEntity;
-import com.mySociety.model.view.basic.UserBasicView;
-import com.mySociety.model.view.basic.UserExpandedView;
-import com.mySociety.model.view.basic.UserRegisterView;
-import com.mySociety.model.view.basic.UserSocietyView;
+import com.mySociety.model.orm.basic.UserSocietyResidenceEntity;
+import com.mySociety.model.view.basic.*;
 import com.mySociety.repository.basic.UserRepository;
 import com.mySociety.services.basic.helpers.UserEntityViewMapper;
 import org.springframework.stereotype.Component;
@@ -13,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by sandesh on 10/9/17.
@@ -40,16 +40,16 @@ public class UserService {
         userEntity.setHideEmail(userRegisterView.getHideEmail());
         userEntity.setCreatedTimestamp(new Date());
         userEntity.setUpdatedTimestamp(new Date());
-        userEntity.setActive('Y');
+        userEntity.setActive("Y");
         userRepository.save(userEntity);
     }
 
 
-    public List<UserBasicView> getAllBasicUserDetails() {
+    public List<DisplayUserBasic> getAllBasicUserDetails() {
         return userEntityViewMapper.mapUserBasicDetails(userRepository.findAll());
     }
 
-    public UserBasicView getBasicUserDetails(final Integer userId) {
+    public DisplayUserBasic getBasicUserDetails(final Integer userId) {
         return userEntityViewMapper.mapUserBasicDetails(userRepository.findByUserId(userId));
     }
 
@@ -60,8 +60,8 @@ public class UserService {
         }
     }
 
-    public UserExpandedView getUserExpandedDetails(final Integer userId) {
-        UserExpandedView userExpandedView = new UserExpandedView();
+    public DisplayUser getUserExpandedDetails(final Integer userId) {
+        DisplayUser userExpandedView = new DisplayUser();
         final UserEntity userEntity = userRepository.findByUserId(userId);
         userExpandedView.setFullName(userEntity.getFullName());
         userExpandedView.setEmail(userEntity.getEmail());
@@ -69,18 +69,33 @@ public class UserService {
         userExpandedView.setUserId(userEntity.getUserId());
 
         userEntity.getUserSocietyMappings().forEach(userSocietyEntity -> {
-            UserSocietyView userSocietyView = new UserSocietyView();
+            DisplayUserSociety userSocietyView = new DisplayUserSociety();
 
             final SocietyEntity societyEntity = userSocietyEntity.getSociety();
+
+
             userSocietyView.setSocietyName(societyEntity.getSocietyName());
-            userSocietyView.setCountry(societyEntity.getCountry());
-            userSocietyView.setState(societyEntity.getState());
             userSocietyView.setCity(societyEntity.getCity());
             userSocietyView.setActive(societyEntity.getActive());
-            userSocietyView.setIntercom(userSocietyEntity.getIntercom());
-            userExpandedView.getSocieties().add(userSocietyView);
-        });
+            userSocietyView.setRole(userSocietyEntity.getRole());
 
+            
+            final Set<UserSocietyResidenceEntity> userSocietyResidences = userSocietyEntity.getUserSocietyResidences();
+            userSocietyResidences.forEach(userSocietyResidenceEntity -> {
+                DisplayResidence residenceView = new DisplayResidence();
+
+                residenceView.setResidentType(userSocietyResidenceEntity.getResidentType());
+
+                final SocietyResidenceEntity societyResidenceEntity = userSocietyResidenceEntity.getSocietyResidence();
+                residenceView.setIntercom(societyResidenceEntity.getIntercom());
+                residenceView.setBlockNumber(societyResidenceEntity.getBlockNumber() == null ?
+                        " " : societyResidenceEntity.getBlockNumber());
+                residenceView.setResidenceNumber(societyResidenceEntity.getResidenceNumber());
+                userSocietyView.getDisplayResidences().add(residenceView);
+
+            });
+            userExpandedView.getUserSocieties().add(userSocietyView);
+        });
         return userExpandedView;
 
     }

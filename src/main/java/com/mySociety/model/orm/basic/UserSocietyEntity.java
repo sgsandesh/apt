@@ -36,11 +36,8 @@ public class UserSocietyEntity implements Serializable {
     @Column(name = "role", nullable = false)
     private String role;
 
-    @Column(name = "intercom")
-    private String intercom;
-
     @Column(name = "active", nullable = false)
-    private char active;
+    private String active;
 
     @Column(name = "created_timestamp", nullable = false)
     private Date createdTimestamp;
@@ -97,19 +94,11 @@ public class UserSocietyEntity implements Serializable {
         this.userSocietyResidences = userSocietyResidences;
     }
 
-    public String getIntercom() {
-        return intercom;
-    }
-
-    public void setIntercom(String intercom) {
-        this.intercom = intercom;
-    }
-
-    public char getActive() {
+    public String getActive() {
         return active;
     }
 
-    public void setActive(char active) {
+    public void setActive(String active) {
         this.active = active;
     }
 

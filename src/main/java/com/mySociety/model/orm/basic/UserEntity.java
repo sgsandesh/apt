@@ -49,7 +49,7 @@ public class UserEntity implements Serializable {
     private Set<UserSocietyEntity> userSocietyMappings;
 
     @Column(name = "active", nullable = false)
-    private char active;
+    private String active;
 
     @Column(name = "created_timestamp", nullable = false)
     private Date createdTimestamp;
@@ -123,11 +123,11 @@ public class UserEntity implements Serializable {
         this.userSocietyMappings = userSocietyMappings;
     }
 
-    public char getActive() {
+    public String getActive() {
         return active;
     }
 
-    public void setActive(char active) {
+    public void setActive(String active) {
         this.active = active;
     }
 

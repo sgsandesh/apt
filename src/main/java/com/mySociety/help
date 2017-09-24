@@ -38,18 +38,23 @@
     }
 
 
+    {
+            "societyId": 1,
+    "residenceNumber": "S002",
+    "intercom" : 2002
+        }
+
+
+
 
 {
-        "societyName": "BRIGADE",
-        "city": "bangalore",
-"country" : "INDIA",
-"state" : "karnataka"
+        "societyId": 1,
+        "userId": 1,
+"roleName" : "Admin",
+"residentType" : "OWNER",
+"residenceNumber": "S002",
     }
 
 
-    {
-            "societyName": "MANTRI",
-            "city": "bangalore",
-    "country" : "INDIA",
-    "state" : "karnataka"
-        }
+
+

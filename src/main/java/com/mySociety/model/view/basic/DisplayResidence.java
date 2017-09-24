@@ -3,22 +3,11 @@ package com.mySociety.model.view.basic;
 /**
  * Created by sandesh on 24/9/17.
  */
-public class UserSocietyResidenceView {
-    private Integer societyId;
-    private Integer userId;
-    private String roleName;
+public class DisplayResidence {
     private String blockNumber;
     private String residenceNumber;
+    private String intercom;
     private String residentType;
-
-
-    public Integer getSocietyId() {
-        return societyId;
-    }
-
-    public void setSocietyId(Integer societyId) {
-        this.societyId = societyId;
-    }
 
     public String getBlockNumber() {
         return blockNumber;
@@ -36,12 +25,12 @@ public class UserSocietyResidenceView {
         this.residenceNumber = residenceNumber;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getIntercom() {
+        return intercom;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setIntercom(String intercom) {
+        this.intercom = intercom;
     }
 
     public String getResidentType() {
@@ -50,13 +39,5 @@ public class UserSocietyResidenceView {
 
     public void setResidentType(String residentType) {
         this.residentType = residentType;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
     }
 }

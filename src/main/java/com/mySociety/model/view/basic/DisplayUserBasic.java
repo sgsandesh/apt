@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by sandesh on 17/9/17.
  */
-public class UserBasicView {
+public class DisplayUserBasic {
 
     private Integer userId;
 

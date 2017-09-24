@@ -10,7 +10,7 @@ import java.util.List;
  * Created by sandesh on 10/9/17.
  */
 @RestController
-@RequestMapping("/rest/society")
+@RequestMapping("/society")
 public class SocietyResource {
     private final SocietyService societyService;
 

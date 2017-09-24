@@ -1,7 +1,7 @@
 package com.mySociety.services.basic.helpers;
 
 import com.mySociety.model.orm.basic.UserEntity;
-import com.mySociety.model.view.basic.UserBasicView;
+import com.mySociety.model.view.basic.DisplayUserBasic;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ import java.util.Objects;
 
 @Component
 public class UserEntityViewMapper {
-    public List<UserBasicView> mapUserBasicDetails(final List<UserEntity> userEntities) {
+    public List<DisplayUserBasic> mapUserBasicDetails(final List<UserEntity> userEntities) {
 
-        List<UserBasicView> userBasicViews = new ArrayList<>();
+        List<DisplayUserBasic> userBasicViews = new ArrayList<>();
         userEntities.forEach(userEntity -> {
             userBasicViews.add( mapUserBasicDetails(userEntity));
         });
@@ -24,8 +24,8 @@ public class UserEntityViewMapper {
         return userBasicViews;
     }
 
-    public UserBasicView mapUserBasicDetails(UserEntity userEntity) {
-        UserBasicView userBasicView = new UserBasicView();
+    public DisplayUserBasic mapUserBasicDetails(UserEntity userEntity) {
+        DisplayUserBasic userBasicView = new DisplayUserBasic();
         if(Objects.isNull(userEntity)){
             userBasicView.getErrors().add("User not found!!");
         }

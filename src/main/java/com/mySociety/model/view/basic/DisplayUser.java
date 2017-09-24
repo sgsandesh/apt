@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by sandesh on 17/9/17.
  */
-public class UserExpandedView {
+public class DisplayUser {
 
     private Integer userId;
 
@@ -17,7 +17,7 @@ public class UserExpandedView {
     private String phoneNumber;
 
 
-    private List<UserSocietyView> societies = new ArrayList<>();
+    private List<DisplayUserSociety> userSocieties = new ArrayList<>();
 
     public Integer getUserId() {
         return userId;
@@ -51,11 +51,11 @@ public class UserExpandedView {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<UserSocietyView> getSocieties() {
-        return societies;
+    public List<DisplayUserSociety> getUserSocieties() {
+        return userSocieties;
     }
 
-    public void setSocieties(List<UserSocietyView> societies) {
-        this.societies = societies;
+    public void setUserSocieties(List<DisplayUserSociety> userSocieties) {
+        this.userSocieties = userSocieties;
     }
 }

@@ -49,13 +49,22 @@ public class UserSocietyResidenceService {
                     user.getFullName(), society.getSocietyName()));
         }
 
+        final String blockNumber = userSocietyResidenceView.getBlockNumber();
+        final String residenceNumber = userSocietyResidenceView.getResidenceNumber();
+        final String residentType = userSocietyResidenceView.getResidentType();
+
+        addResidence(society, userSociety, blockNumber, residenceNumber, residentType);
+    }
+
+
+    public void addResidence(SocietyEntity society, UserSocietyEntity userSociety,
+                     String blockNumber, String residenceNumber, String residentType) throws Exception {
         final SocietyResidenceEntity societyResidenceEntity = societyResidenceService.
-                validateIfResidenceExistInSociety(society, userSocietyResidenceView.getBlockNumber(),
-                        userSocietyResidenceView.getResidenceNumber());
+                validateIfResidenceExistInSociety(society, blockNumber, residenceNumber);
         UserSocietyResidenceEntity userSocietyResidenceEntity = new UserSocietyResidenceEntity();
         userSocietyResidenceEntity.setUserSociety(userSociety);
         userSocietyResidenceEntity.setSocietyResidence(societyResidenceEntity);
-        userSocietyResidenceEntity.setResidentType(userSocietyResidenceView.getResidentType());
+        userSocietyResidenceEntity.setResidentType(residentType);
 
         userSocietyResidenceRepository.save(userSocietyResidenceEntity);
         userSociety.getUserSocietyResidences().add(userSocietyResidenceEntity);

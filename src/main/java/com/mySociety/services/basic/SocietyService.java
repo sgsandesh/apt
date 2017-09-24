@@ -16,7 +16,6 @@ import static com.mySociety.utils.Constants.Role.ADMIN;
  */
 @Component
 public class SocietyService {
-
     private final SocietyRepository societyRepository;
     private final UserSocietyService userSocietyService;
 
@@ -41,7 +40,7 @@ public class SocietyService {
         }
         societyEntity.setCreatedUser("LOGGED-IN-USER-ID");
         societyEntity.setCreatedTimestamp(new Date());
-        addAuditDetails(societyEntity, "LOGGED-IN-USER-ID", 'Y');
+        addAuditDetails(societyEntity, "LOGGED-IN-USER-ID", "Y");
         final SocietyEntity societyRegistered = societyRepository.saveAndFlush(societyEntity);
         userSocietyService.addMap(userId, societyRegistered.getSocietyId(), ADMIN.name());
     }
@@ -54,11 +53,11 @@ public class SocietyService {
         }
         existingEntity.setSocietyName(societyEntity.getSocietyName());
         existingEntity.setCity(societyEntity.getCity());
-        addAuditDetails(existingEntity, "LOGGED-IN-USER-ID", 'Y');
+        addAuditDetails(existingEntity, "LOGGED-IN-USER-ID", "Y");
         return existingEntity;
     }
 
-    private void addAuditDetails(final SocietyEntity apartmentEntity, final String userName, final char isActive) {
+    private void addAuditDetails(final SocietyEntity apartmentEntity, final String userName, final String isActive) {
         apartmentEntity.setUpdatedUser(userName);
         apartmentEntity.setUpdatedTimestamp(new Date());
         apartmentEntity.setActive(isActive);
